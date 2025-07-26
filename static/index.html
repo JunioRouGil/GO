@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Notícias usando GO</title>
+    <style>
+        /* Reset básico e fontes */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #0056b3;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+        }
+
+        /* Layout principal com Flexbox */
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        main {
+            flex: 3; /* Ocupa 3/4 do espaço */
+        }
+
+        aside {
+            flex: 1; /* Ocupa 1/4 do espaço */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Seção de Destaque */
+        .featured-article {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .featured-article img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .featured-article h2 {
+            margin-top: 0;
+            font-size: 2em;
+        }
+
+        /* Grid de Notícias */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .article-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .article-card-content {
+            padding: 15px;
+        }
+
+        .article-card h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .article-card p {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .article-card a {
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        /* Barra Lateral */
+        .sidebar-widget {
+            margin-bottom: 20px;
+        }
+
+        .sidebar-widget h4 {
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .sidebar-widget ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-widget ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-widget a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Portal de Notícias GO</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Últimas Notícias</a></li>
+                <li><a href="#">Política</a></li>
+                <li><a href="#">Esportes</a></li>
+                <li><a href="#">Tecnologia</a></li>
+                <li><a href="#">Cultura</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <img src="https://go.dev/images/gophers/motorcycle.svg" style="height: 13.25rem;" alt="Esquilo Go andando de moto" title="Esquilo Go andando de moto">
+        <div class="main-content">
+            <main>
+                <!-- Notícia em Destaque -->
+                <section class="featured-article">
+                    <img src="https://picsum.photos/800/400?random=1" alt="Imagem da notícia em destaque">
+                    <h2>Título da Notícia Principal em Destaque</h2>
+                    <p>Este é o resumo da notícia principal. Um texto um pouco mais longo para descrever o acontecimento, atraindo o leitor para clicar e ler o conteúdo completo. A ideia é que esta seção chame bastante atenção.</p>
+                    <a href="#">Leia mais &rarr;</a>
+                </section>
+
+                <!-- Outras Notícias -->
+                <h3>Mais Notícias</h3>
+                <section class="articles-grid">
+                    <article class="article-card">
+                        <img src="https://picsum.photos/400/225?random=2" alt="Imagem da notícia">
+                        <div class="article-card-content">
+                            <h3>Título da Notícia Secundária 1</h3>
+                            <p>Resumo da notícia secundária. Um texto breve sobre o assunto abordado no artigo.</p>
+                            <a href="#">Leia mais &rarr;</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <img src="https://picsum.photos/400/225?random=3" alt="Imagem da notícia">
+                        <div class="article-card-content">
+                            <h3>Título da Notícia Secundária 2</h3>
+                            <p>Resumo da notícia secundária. Um texto breve sobre o assunto abordado no artigo.</p>
+                            <a href="#">Leia mais &rarr;</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <img src="https://picsum.photos/400/225?random=4" alt="Imagem da notícia">
+                        <div class="article-card-content">
+                            <h3>Título da Notícia Secundária 3</h3>
+                            <p>Resumo da notícia secundária. Um texto breve sobre o assunto abordado no artigo.</p>
+                            <a href="#">Leia mais &rarr;</a>
+                        </div>
+                    </article>
+                </section>
+            </main>
+
+            <!-- Barra Lateral -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h4>Categorias</h4>
+                    <ul>
+                        <li><a href="#">Mundo</a></li>
+                        <li><a href="#">Economia</a></li>
+                        <li><a href="#">Saúde</a></li>
+                        <li><a href="#">Entretenimento</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h4>Mais Lidas</h4>
+                    <ul>
+                        <li><a href="#">Artigo popular 1</a></li>
+                        <li><a href="#">Artigo popular 2</a></li>
+                        <li><a href="#">Artigo popular 3</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Portal de Notícias. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
